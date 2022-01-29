@@ -1,0 +1,23 @@
+---
+- hosts: "all"
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Copy index page
+    copy:
+      src: files/index.html
+      dest: /var/www/html/
+
+  - name: Start service httpd, if not started
+    service:
+      name: httpd
+      state: started
+
+  - name: Open http
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
