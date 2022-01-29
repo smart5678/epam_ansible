@@ -6,10 +6,10 @@
     group: users
     home: /home/{{ item }}
     comment: "{{ item }}@example.com"
-    register: user
+  register: user
 
-- name: Grenerate password for {{ item }}
-    user:
-      name: "{{ item }}"
-      password: "{{ password[item] | password_hash('sha512') }}"
+- name: Grenerate password {{ passwords[item] }} for {{ item }}
+  user:
+    name: "{{ item }}"
+    password: "{{ passwords[item] | password_hash('sha512') }}"
   when: user.changed

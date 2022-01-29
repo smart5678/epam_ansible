@@ -7,13 +7,13 @@
 # Кроме пароля больше ничего шифровать не нужно.
 # У уже созданных аккаунтов пароль менять не нужно.
 - hosts: "all"
-  vars_files: password.yaml
+  vars_files: passwords.yaml
   vars:
     users:
       - alice
       - bob
       - carol
   tasks:
-  - name: Create Users
-    include_tasks: add_user.yaml
-    loop: "{{ users }}"
+    - name: Create Users
+      include_tasks: add_user.yaml
+      loop: "{{ users }}"
