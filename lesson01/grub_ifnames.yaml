@@ -25,3 +25,6 @@
       regexp: '(^GRUB_CMDLINE_LINUX((?!biosdevname=\d).)*)\"$'
       replace: '\g<1> biosdevname=0"'
 
+  - name: grub2-mkconfig
+    command: grub2-mkconfig
+
