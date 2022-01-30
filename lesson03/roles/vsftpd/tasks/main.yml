@@ -12,7 +12,7 @@
     group: root
     owner: root
     mode: 755
-    setype: public_content_t
+    setype: public_content_rw_t
 
 # - name: chcon
 #   command: chcon -t public_content_rw_t {{ ftp_pub_dir }}
@@ -37,7 +37,7 @@
     path: '{{ ftp_pub_dir }}/upload'
     state: directory
     group: root
-    mode: 755
+    mode: 777
     owner: root
     setype: public_content_rw_t
 
