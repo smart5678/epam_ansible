@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  tasks:
+  - name: debugg
+    debug:
+      msg: "{{ ansible_nodename }}"
+  roles:
+  - vsftpd
+

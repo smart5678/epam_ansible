@@ -1,0 +1,13 @@
+---
+# handlers file for vsftpd
+- name: open ftp
+  firewalld:
+    service: ftp
+    repmanent: yes
+    state: enabled
+
+- name: restart ftp
+  service:
+    name: vsftpd
+    state: restarted
+

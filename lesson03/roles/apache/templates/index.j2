@@ -1,0 +1,10 @@
+<html>
+<body>
+<h1>Welcome to my web server</h1>
+<p>Configuration delivered: {{ ansible_date_time.date }} {{ ansible_date_time.time }}</p>
+<p>Node name: {{ ansible_nodename }}</p>
+<p>Node IP Adddress: {{ ansible_eth1.ipv4.address }}/{{ ansible_eth1.ipv4.netmask }}</p>
+<p>OS: {{ ansible_distribution }} {{ ansible_distribution_version }}</p>
+
+</body>
+</html>

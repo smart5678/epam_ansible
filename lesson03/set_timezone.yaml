@@ -1,6 +1,0 @@
----
-- hosts: "all"
-  tasks:
-  - name: "Set moscow timezone"
-    timezone:
-      name: "Europe/Moscow"
