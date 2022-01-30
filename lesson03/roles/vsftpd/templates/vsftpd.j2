@@ -9,6 +9,8 @@ write_enable=YES
 #
 # Default umask for local users is 077. You may wish to change this to 022,
 # if your users expect that (022 is used by most other ftpd's)
+no_anon_password=YES
+anon_umask=022
 local_umask=022
 #
 # Uncomment this to allow the anonymous FTP user to upload files. This only
@@ -34,8 +36,8 @@ connect_from_port_20=YES
 # If you want, you can arrange for uploaded anonymous files to be owned by
 # a different user. Note! Using "root" for uploaded files is not
 # recommended!
-#chown_uploads=YES
-#chown_username=whoever
+# chown_uploads=YES
+# chown_username=root
 #
 # You may override where the log file goes if you like. The default is shown
 # below.

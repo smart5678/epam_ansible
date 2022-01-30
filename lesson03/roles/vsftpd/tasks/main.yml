@@ -11,41 +11,23 @@
     state: directory
     group: root
     owner: root
-    mode: 755
-    setype: public_content_rw_t
-
-# - name: chcon
-#   command: chcon -t public_content_rw_t {{ ftp_pub_dir }}
-
-#- import_tasks: selinux.yml
-
-#- name: enable ftp to anonymous upload
-#  sefcontext:
-#    target: "{{ ftp_pub_dir }}"
-#    setype: public_content_rw_t
-#    state: present
-
-#- name: enable ftp to anonymous upload
-#  sefcontext:
-#    target: "{{ ftp_pub_dir }}(./*)?"
-#    setype: public_content_rw_t
-#    state: present
-
+    mode: '755'
+    setype: public_content_t
 
 - name: pub upload directory
   file:
     path: '{{ ftp_pub_dir }}/upload'
     state: directory
     group: root
-    mode: 777
+    mode: '777'
     owner: root
     setype: public_content_rw_t
 
-- name: SELinux policy for anon write
-  seboolean:
-    name: allow_ftpd_anon_write
-    state: yes
-    persistent: yes
+#- name: SELinux policy for anon write
+#  seboolean:
+#    name: allow_ftpd_anon_write
+#    state: yes
+#    persistent: yes
 
 - name: SELinux policy for anon write
   seboolean:
@@ -54,20 +36,11 @@
     persistent: yes
 
 
-- name: SELinux policy for anon write
-  seboolean:
-    name: ftpd_full_access
-    state: yes
-    persistent: yes
-
-#- name: Restore context
-#  command: restorecon -Rvv /var/ftp
-
-#- name: Start service vsftpd
-#  service:
-#    name: vsftpd
-#    state: started
-#  notify: open ftp
+- name: Start service vsftpd
+  service:
+    name: vsftpd
+    state: started
+  notify: open ftp
 
 - name: Config file
   template:
