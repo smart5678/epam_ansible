@@ -1,0 +1,15 @@
+---
+- name: Create user {{ item }}
+  user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    group: users
+    home: /home/{{ item }}
+    comment: "{{ item }}@example.com"
+    register: user
+
+- name: Grenerate password for {{ item }}
+    user:
+      name: "{{ item }}"
+      password: "{{ password[item] | password_hash('sha512') }}"
+  when: user.changed
