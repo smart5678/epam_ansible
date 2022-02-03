@@ -1,0 +1,18 @@
+---
+- hosts: "all"
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: absent
+
+  - name: Delete index page
+    file:
+      state: absent
+      path: /var/www/html/index.html
+
+  - name: Close http
+    firewalld:
+      service: http
+      permanent: yes
+      state: disabled
